@@ -20,7 +20,7 @@ else
 	echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' | sudo tee /etc/apt/preferences.d/rocm-pin-600
 	apt update
 	apt install rocm-dev
-	tar xvf /hive/miners/custom/rqiner-x86-cuda/zluda-release-20240409.tar.gz -c /hive/miners/custom/rqiner-x86-cuda/
+	tar xvf /hive/miners/custom/rqiner-x86-cuda-amd/zluda-release-20240409.tar.gz -c /hive/miners/custom/rqiner-x86-cuda-amd/
 fi
 
 if dpkg -s libc6 | grep Version  | grep -q "2.35"; then
@@ -69,10 +69,10 @@ done
 # Remove the -arch argument and its value
 CLEAN=$(echo "$CUSTOM_USER_CONFIG" | sed -E 's/-arch [^ ]+ //')
 echo "args are now: $CLEAN"
-/hive/miners/custom/rqiner-x86-cuda/rqiner-x86-cuda -V > "/tmp/.rqiner-x86-cuda-version"
+/hive/miners/custom/rqiner-x86-cuda-amd/rqiner-x86-cuda -V > "/tmp/.rqiner-x86-cuda-version"
 
 echo $(date +%s) > "/tmp/miner_start_time"
-/hive/miners/custom/rqiner-x86-cuda/rqiner-x86-cuda $CLEAN  2>&1 | tee --append ${CUSTOM_LOG_BASENAME}.log
+/hive/miners/custom/rqiner-x86-cuda-amd/rqiner-x86-cuda $CLEAN  2>&1 | tee --append ${CUSTOM_LOG_BASENAME}.log
 
 echo "Miner has exited"
 
