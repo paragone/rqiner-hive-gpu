@@ -1,4 +1,4 @@
-# rqiner-hive-gpu
+# rqiner-hive-gpu-amd
 [NO LIBC6 ERROR!!!] Hiveon OS Flight Sheet for rqiner-gpu  (qubic-solutions) <br>
 
 觉得好用可以小小的打赏一波哦！<br>
@@ -12,11 +12,11 @@ PAVAGWGIGXCUKAAKHUCKUSQWJPFABYYZZLMYASJKNAZRFEEQTSBXYEFCTEXG
 - 在国内没有科学上网，可以直接使用<br>
 for china:<br>
 ```
-https://mirror.ghproxy.com/https://github.com/paragone/rqiner-hive-gpu/releases/download/0.3.22/rqiner-x86-cuda-0.3.22.tar.gz
+https://mirror.ghproxy.com/https://github.com/paragone/rqiner-hive-gpu/releases/download/0.3.22.a/rqiner-x86-cuda-amd-0.3.22.tar.gz
 ```
 - others:<br>
 ```
-https://github.com/paragone/rqiner-hive-gpu/releases/download/0.3.22/rqiner-x86-cuda-0.3.22.tar.gz
+https://github.com/paragone/rqiner-hive-gpu/releases/download/0.3.22.a/rqiner-x86-cuda-amd-0.3.22.tar.gz
 ```
 
 ![My Image](china.png)``
