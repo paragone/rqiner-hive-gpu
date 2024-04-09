@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source /hive/miners/custom/rqiner-x86-cuda/h-manifest.conf
+source /hive/miners/custom/rqiner-x86-cuda-amd/h-manifest.conf
 
 start_time=$(date +%s)
 
