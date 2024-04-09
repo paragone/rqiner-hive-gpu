@@ -9,7 +9,7 @@ source h-manifest.conf
 #	echo -e "${RED}$CUSTOM_NAME miner is already running${NOCOLOR}" &&
 #	exit 1
 
-if test -f /opt/rocm/bin/hipcc; then
+if test -f /opt/rocm-6.0.2/bin/amd-smi; then
     echo "not to install rocm"
 else
     echo "start to install rocm"
@@ -39,7 +39,7 @@ if [[ -z $CUSTOM_CONFIG_FILENAME ]]; then
 	echo -e "The config file is not defined"
 fi
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib:/hive/miners/custom/rqiner-x86-cuda-amd/zluda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib:/hive/miners/custom/rqiner-x86-cuda-amd/zluda:/opt/rocm-6.0.2/lib
 
 CUSTOM_USER_CONFIG=$(< $CUSTOM_CONFIG_FILENAME)
 
