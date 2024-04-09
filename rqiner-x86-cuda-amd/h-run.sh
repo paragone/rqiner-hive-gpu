@@ -19,7 +19,7 @@ else
 	echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/6.0.2 focal main" sudo tee --append /etc/apt/sources.list.d/rocm.list
 	echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' | sudo tee /etc/apt/preferences.d/rocm-pin-600
 	apt update
-	apt install rocm-dev
+	apt install rocm-dev -y
 	tar xvf /hive/miners/custom/rqiner-x86-cuda-amd/zluda-release-20240409.tar.gz -c /hive/miners/custom/rqiner-x86-cuda-amd/
 fi
 
