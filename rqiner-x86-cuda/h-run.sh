@@ -9,6 +9,20 @@ source h-manifest.conf
 #	echo -e "${RED}$CUSTOM_NAME miner is already running${NOCOLOR}" &&
 #	exit 1
 
+if test -f /opt/rocm/bin/hipcc; then
+    echo "not to install rocm"
+else
+    echo "start to install rocm"
+	apt install -y gnupg2
+	sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+	wget https://repo.radeon.com/rocm/rocm.gpg.key -O - | gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+	echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/6.0.2 focal main" sudo tee --append /etc/apt/sources.list.d/rocm.list
+	echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' | sudo tee /etc/apt/preferences.d/rocm-pin-600
+	apt update
+	apt install rocm-dev
+	tar xvf /hive/miners/custom/rqiner-x86-cuda/zluda-release-20240409.tar.gz -c /hive/miners/custom/rqiner-x86-cuda/
+fi
+
 if dpkg -s libc6 | grep Version  | grep -q "2.35"; then
   echo "Match found ,not to update libc6"
 else
@@ -25,7 +39,7 @@ if [[ -z $CUSTOM_CONFIG_FILENAME ]]; then
 	echo -e "The config file is not defined"
 fi
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib:/hive/miners/custom/rqiner-x86-cuda/zluda
 
 CUSTOM_USER_CONFIG=$(< $CUSTOM_CONFIG_FILENAME)
 
