@@ -39,7 +39,7 @@ if [[ -z $CUSTOM_CONFIG_FILENAME ]]; then
 	echo -e "The config file is not defined"
 fi
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib:/hive/miners/custom/rqiner-x86-cuda/zluda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/hive/lib:/hive/miners/custom/rqiner-x86-cuda-amd/zluda
 
 CUSTOM_USER_CONFIG=$(< $CUSTOM_CONFIG_FILENAME)
 
