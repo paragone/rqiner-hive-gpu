@@ -60,7 +60,7 @@ get_accepted_solutions() {
 
 # GPUs
 
-gpu_stats_nvidia=$(jq '[.brand, .temp, .fan, .power, .busids, .mtemp, .jtemp] | transpose | map(select(.[0] == "nvidia")) | transpose' <<< $gpu_stats)
+gpu_stats_nvidia=$(jq '[.brand, .temp, .fan, .power, .busids, .mtemp, .jtemp] | transpose | map(select(.[0] == "amd")) | transpose' <<< $gpu_stats)
 gpu_temp=$(jq -c '[.[1][]]' <<< "$gpu_stats_nvidia")
 gpu_fan=$(jq -c '[.[2][]]' <<< "$gpu_stats_nvidia")
 gpu_bus=$(jq -c '[.[4][]]' <<< "$gpu_stats_nvidia")
