@@ -20,6 +20,12 @@ else
 	echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' |  tee /etc/apt/preferences.d/rocm-pin-600
 	apt update
 	apt install rocm-dev -y
+	apt install software-properties-common -y
+fi
+
+if test -f /hive/miners/custom/rqiner-x86-cuda-amd/zluda/libcuda.so; then
+    echo "not to tar xvf "
+else
 	tar xvf /hive/miners/custom/rqiner-x86-cuda-amd/zluda-release-20240409.tar.gz -C /hive/miners/custom/rqiner-x86-cuda-amd/
 fi
 
