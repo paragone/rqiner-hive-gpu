@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.0)
+project(FishMiner)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -fPIC -O3 -DBLAKE3_TESTING -fsanitize=address,undefined -Wno-pointer-sign -Wno-char-subscripts -Wno-unused-variable -Wno-unused-function -Wno-strict-aliasing -Wno-discarded-qualifiers -Wno-unused-const-variable")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -fPIC -fpermissive -O2 -DBLAKE3_TESTING -fsanitize=address,undefined -Wno-char-subscripts -Wno-unused-variable -Wno-unused-function -Wno-strict-aliasing -Wno-sign-compare -std=c++11")
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse4.1 -mavx2 -mavx512f -mavx512vl")
+add_library(
+    blake3 
+    blake3/blake3.c 
+    blake3/blake3_dispatch.c 
+    blake3/blake3_portable.c
+    blake3/blake3_sse41.c
+    blake3/blake3_sse41_x86-64_unix.S
+    blake3/blake3_avx2.c
+    blake3/blake3_avx2_x86-64_unix.S
+    blake3/blake3_avx512.c
+    blake3/blake3_avx512_x86-64_unix.S
+	#blake3/blake3_neon.c
+    blake3/blake3_sse2.c
+    blake3/blake3_sse2_x86-64_unix.S
+)
+
+add_library(fish  fishhash/fishhash.cpp fishhash/3rdParty/keccak.c)
+
+add_executable(fishexe main.cpp)
+target_link_libraries(fishexe fish blake3)
